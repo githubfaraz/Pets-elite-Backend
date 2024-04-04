@@ -6,6 +6,7 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 const cors = require('cors');
+const BlogModel = require('./models/BlogModel');
 
 // Middlewares
 app.use(express.json());
@@ -14,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(
     cors({
-        origin: ["http://localhost:3000","http://localhost:3001", "https://pinvent-app.vercel.app"],
+        origin: ["http://localhost:3000","http://localhost:3001", "https://www.elitetreatforpets.com"],
         credentials: true,
     })
 );
@@ -39,6 +40,16 @@ app.get('/api/bully-sticks', async (req, res) => {
   }
 });
 
+app.get('/api/blogs', async (req, res) => {
+  try {
+    const users = await BlogModel.find();
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 app.get('/api/bully-sticks/:id', async (req, res) => {
   const furnitureId = req.params.id
@@ -55,7 +66,23 @@ app.get('/api/bully-sticks/:id', async (req, res) => {
   res.status(200).json(furniture);
 });
 
+app.get('/api/blogs/:id', async (req, res) => {
+  const blogId = req.params.id
+
+  let blog;
+
+  try {
+    blog = await BlogModel.findById(blogId);
+  } catch (error) {
+    res.status(404)
+  }
+
+  res.status(200).json(blog);
+
+});
+
+
 // Start the server
-app.listen(5000, () => {
+app.listen(3000, () => {
   console.log('Server is running on port 3001');
 });
