@@ -4,7 +4,7 @@ const Furniture = require('../models/petModel');
 const BlogModel = require('../models/BlogModel');
 const dotenv = require('dotenv').config();
 
-mongoose.connect('mongodb+srv://vercelUserFaraz:UhORRpVa6TlfPUE1@localhost:27017/Pets-Elite?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://vercelUserFaraz:UhORRpVa6TlfPUE1@cluster0.b9a9r.mongodb.net/Pets-Elite?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

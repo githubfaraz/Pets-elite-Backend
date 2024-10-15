@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const MONGO_URI = 'mongodb+srv://vercelUserFaraz:UhORRpVa6TlfPUE1@localhost:27017/Pets-Elite?retryWrites=true&w=majority&appName=Cluster0'
+const MONGO_URI = 'mongodb+srv://vercelUserFaraz:UhORRpVa6TlfPUE1@cluster0.b9a9r.mongodb.net/Pets-Elite?retryWrites=true&w=majority&appName=Cluster0'
 const Pet = require('./models/petModel')
 const app = express();
 const cookieParser = require('cookie-parser');
