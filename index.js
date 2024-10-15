@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const MONGO_URI = 'mongodb+srv://wesleywaka2:wesleywaka2@clusterztm.kle9fqo.mongodb.net/Pets-Elite?retryWrites=true&w=majority'
-const Pet =require('./models/petModel')
+const MONGO_URI = 'mongodb+srv://vercelUserFaraz:UhORRpVa6TlfPUE1@cluster0.b9a9r.mongodb.net/Pets-Elite?retryWrites=true&w=majority&appName=Cluster0'
+const Pet = require('./models/petModel')
 const app = express();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
@@ -14,10 +14,10 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(
-    cors({
-        origin: ["http://localhost:3000","http://localhost:3001", "https://www.elitetreatforpets.com"],
-        credentials: true,
-    })
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:3001", "https://www.elitetreatforpets.com"],
+    credentials: true,
+  })
 );
 
 // Connect to MongoDB
@@ -57,10 +57,10 @@ app.get('/api/bully-sticks/:id', async (req, res) => {
   let furniture;
 
   try {
-      furniture = await Pet.findById(furnitureId);
+    furniture = await Pet.findById(furnitureId);
   } catch (error) {
-      res.status(404)
-      // throw new Error('Furniture does not exist')
+    res.status(404)
+    // throw new Error('Furniture does not exist')
   }
 
   res.status(200).json(furniture);
